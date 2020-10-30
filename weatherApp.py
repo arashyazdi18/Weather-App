@@ -26,7 +26,7 @@ response = requests.get(complete_url)
 # We will convert the json format data into Python 
 x = response.json()
 
-# 404 means not found, otherwise found
+# check if city is found
 if x["cod"] != "404":
 
     y = x["main"]
@@ -34,8 +34,10 @@ if x["cod"] != "404":
     #API returns in kelvin
     current_temp = int(round(y["temp"] - 273.15))
 
+    # record pressure in hPa
     current_pressure = y["pressure"]
 
+    # record percent humidity
     current_humidity = y["humidity"]
 
     z = x["weather"]
